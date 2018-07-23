@@ -3,7 +3,7 @@ require 'pry'
 class Pokemon
   attr_accessor :name, :type, :db, :id
 
-  def initialize(id:, name:, type:, db: nil)
+  def initialize(id:, name:, type:, db:)
     # binding.pry
     @id = id
     @name = name
@@ -31,7 +31,7 @@ class Pokemon
       WHERE id = ?
     SQL
     find_pokemon = db.execute(sql, id).flatten
-    pokemon_object = Pokemon.new(id: find_pokemon[0], name: find_pokemon[1], type: find_pokemon[2])
+    pokemon_object = Pokemon.new(id: find_pokemon[0], name: find_pokemon[1], type: find_pokemon[2], db: db)
     # binding.pry
 
   end
